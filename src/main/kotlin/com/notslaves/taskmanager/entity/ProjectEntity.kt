@@ -10,4 +10,19 @@ class ProjectEntity {
     @GeneratedValue
     @Column(name = "id")
     var id: Int? = null
+
+    @Column(name = "name")
+    var name: String? = null
+
+    @Lob
+    @Column(name = "description")
+    var description: String? = null
+
+    @Column(name = "created", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    var created: Date? = null
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    var user: UserEntity? = null
 }
