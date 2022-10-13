@@ -10,4 +10,15 @@ class UserEntity {
     @GeneratedValue
     @Column(name = "id")
     var id: Int? = null
+
+    @Column(name = "username")
+    var username: String? = null
+
+    @Column(name = "created", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    var created: Date? = null
+
+    @OneToMany(mappedBy = "user")
+    var projects: MutableList<ProjectEntity>? = null
+
 }
