@@ -10,4 +10,10 @@ class TaskStatusEntity {
     @GeneratedValue
     @Column(name = "id")
     var id: Int? = null
+
+    @Column(name = "name")
+    var name: String? = null
+
+    @OneToMany(mappedBy = "status")
+    var tasks: MutableList<TaskEntity>? = null
 }
