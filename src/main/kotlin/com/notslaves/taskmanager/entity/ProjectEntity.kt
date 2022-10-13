@@ -25,4 +25,7 @@ class ProjectEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     var user: UserEntity? = null
+
+    @OneToMany(mappedBy = "project")
+    var tasks: MutableList<TaskEntity>? = null
 }
