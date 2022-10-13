@@ -23,6 +23,6 @@ class TaskEntity {
     var status: TaskStatusEntity? = null
 
     @ManyToOne(cascade = [CascadeType.REMOVE])
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    var user: UserEntity? = null
+    @JoinColumn(name = "project_id", referencedColumnName = "id")
+    var project: ProjectEntity? = null
 }
