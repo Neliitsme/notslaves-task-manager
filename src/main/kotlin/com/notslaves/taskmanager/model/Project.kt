@@ -8,5 +8,5 @@ data class Project(
     val description: String?,
     val created: Date,
     val user: User,
-    val tasks: MutableList<Task>?,
+    val tasks: List<Task>?,
 )

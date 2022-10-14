@@ -1,10 +1,7 @@
 package com.notslaves.taskmanager.service
 
 import com.notslaves.taskmanager.entity.TaskEntity
-import com.notslaves.taskmanager.entity.TaskStatusEntity
-import com.notslaves.taskmanager.entity.UserEntity
 import com.notslaves.taskmanager.model.Task
-import com.notslaves.taskmanager.model.User
 import org.springframework.stereotype.Component
 
 @Component
@@ -23,7 +20,12 @@ class TaskMapper(
         return entity
     }
 
-    fun entityToModel(entity: TaskEntity) {
-
-    }
+    fun entityToModel(entity: TaskEntity): Task = Task(
+        entity.id!!,
+        entity.name!!,
+        entity.description!!,
+        entity.created!!,
+        taskStatusMapper.entityToModel(entity.status!!),
+        projectMapper.entityToModel(entity.project!!)
+    )
 }

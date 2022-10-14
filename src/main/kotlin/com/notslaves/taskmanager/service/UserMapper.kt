@@ -1,7 +1,5 @@
 package com.notslaves.taskmanager.service
 
-import com.notslaves.taskmanager.entity.ProjectEntity
-import com.notslaves.taskmanager.entity.TaskEntity
 import com.notslaves.taskmanager.entity.UserEntity
 import com.notslaves.taskmanager.model.User
 import org.springframework.stereotype.Component
@@ -15,11 +13,14 @@ class UserMapper(
         entity.id = model.id
         entity.username = model.username
         entity.created = model.created
-        entity.projects = model.projects?.map { projectMapper.modelToEntity(it) } as MutableList<ProjectEntity>?
+        entity.projects = model.projects?.map { projectMapper.modelToEntity(it) }
         return entity
     }
 
-    fun entityToModel(entity: UserEntity) {
-
-    }
+    fun entityToModel(entity: UserEntity): User = User(
+        entity.id!!,
+        entity.username!!,
+        entity.created!!,
+        entity.projects?.map { projectMapper.entityToModel(it) } ?: listOf()
+    )
 }

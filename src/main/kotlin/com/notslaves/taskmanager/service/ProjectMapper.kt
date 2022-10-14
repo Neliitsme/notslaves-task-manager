@@ -3,13 +3,12 @@ package com.notslaves.taskmanager.service
 import com.notslaves.taskmanager.entity.ProjectEntity
 import com.notslaves.taskmanager.entity.TaskEntity
 import com.notslaves.taskmanager.model.Project
-import com.notslaves.taskmanager.model.Task
 import org.springframework.stereotype.Component
 
 @Component
 class ProjectMapper(
     private val userMapper: UserMapper,
-    private val tasksMapper: TaskMapper
+    private val tasksMapper: TaskMapper,
 ) {
 
     fun modelToEntity(model: Project): ProjectEntity {
@@ -23,7 +22,12 @@ class ProjectMapper(
         return entity
     }
 
-    fun entityToModel(entity: ProjectEntity) {
-
-    }
+    fun entityToModel(entity: ProjectEntity): Project = Project(
+        entity.id!!,
+        entity.name!!,
+        entity.description!!,
+        entity.created!!,
+        userMapper.entityToModel(entity.user!!),
+        entity.tasks?.map { tasksMapper.entityToModel(it) } ?: listOf()
+    )
 }

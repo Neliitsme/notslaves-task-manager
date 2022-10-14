@@ -27,5 +27,5 @@ class ProjectEntity {
     var user: UserEntity? = null
 
     @OneToMany(mappedBy = "project")
-    var tasks: MutableList<TaskEntity>? = null
+    var tasks: List<TaskEntity>? = null
 }
