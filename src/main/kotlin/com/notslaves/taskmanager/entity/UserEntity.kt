@@ -11,7 +11,7 @@ class UserEntity {
     @Column(name = "id")
     var id: Int? = null
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     var username: String? = null
 
     @Column(name = "created", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

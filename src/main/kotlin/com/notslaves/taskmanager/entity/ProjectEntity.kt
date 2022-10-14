@@ -11,7 +11,7 @@ class ProjectEntity {
     @Column(name = "id")
     var id: Int? = null
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     var name: String? = null
 
     @Lob
