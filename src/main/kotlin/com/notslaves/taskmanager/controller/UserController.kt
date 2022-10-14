@@ -14,9 +14,9 @@ class UserController(private val service: UserService) {
     @GetMapping("/{id}")
     fun getUser(@PathVariable("id") id: Int) = null
 
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     fun deleteUser(@PathVariable("id") id: Int) = null
 
-    @PatchMapping("/id")
+    @PatchMapping("/{id}")
     fun modifyUser(@PathVariable("id") id: Int) = null
 }
