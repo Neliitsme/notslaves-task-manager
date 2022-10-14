@@ -7,6 +7,6 @@ data class Project(
     val name: String,
     val description: String?,
     val created: Date,
-    val user: String,
+    val user: User,
     val tasks: MutableList<Task>?,
 )

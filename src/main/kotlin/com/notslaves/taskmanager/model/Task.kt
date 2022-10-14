@@ -7,6 +7,6 @@ data class Task(
     val name: String,
     val description: String?,
     val created: Date,
-    val status: String,
+    val status: TaskStatus,
     val project: Project,
 )

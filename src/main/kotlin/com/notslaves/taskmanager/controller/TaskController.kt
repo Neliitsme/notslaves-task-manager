@@ -8,34 +8,34 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
-@RequestMapping("api/v1/tasks")
+@RequestMapping("/api/v1/tasks")
 class TaskController(private val service: TaskService) {
     // Todo
     @GetMapping
     fun getAllTasks() = null
 
     @PutMapping("/{id}")
-    fun changeTaskStatus() = null
+    fun changeTaskStatus(@PathVariable("id") id: Int) = null
 
     @GetMapping("/{id}")
-    fun getTask() = null
+    fun getTask(@PathVariable("id") id: Int) = null
 
     @GetMapping("/project/{id}")
-    fun getTasksByProjectId() = null
+    fun getTasksByProjectId(@PathVariable("id") id: Int) = null
 
     // Todo
     // Would be nice to add finding tasks by status within a project
     @GetMapping("/status/{id}")
-    fun getTasksByStatusId() = null
+    fun getTasksByStatusId(@PathVariable("id") id: Int) = null
 
     @DeleteMapping("/{id}")
-    fun deleteTask() = null
+    fun deleteTask(@PathVariable("id") id: Int) = null
 
     // For that niche use case. Not obligatory.
     @DeleteMapping("/status/{id}")
-    fun deleteAllTasksByStatusId() = null
+    fun deleteAllTasksByStatusId(@PathVariable("id") id: Int) = null
 
     @PatchMapping("/{id}")
-    fun modifyTask() = null
+    fun modifyTask(@PathVariable("id") id: Int) = null
 
 }
