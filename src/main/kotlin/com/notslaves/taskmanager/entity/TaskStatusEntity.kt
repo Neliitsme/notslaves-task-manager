@@ -15,5 +15,5 @@ class TaskStatusEntity {
     var name: String? = null
 
     @OneToMany(mappedBy = "status")
-    var tasks: List<TaskEntity>? = null
+    var tasks: MutableList<TaskEntity>? = null
 }

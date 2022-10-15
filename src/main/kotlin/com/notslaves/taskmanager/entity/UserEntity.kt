@@ -19,6 +19,6 @@ class UserEntity {
     var created: Date? = null
 
     @OneToMany(mappedBy = "user")
-    var projects: List<ProjectEntity>? = null
+    var projects: MutableList<ProjectEntity>? = null
 
 }

@@ -15,13 +15,13 @@ class TaskStatusMapper(
         val entity = TaskStatusEntity()
         entity.id = model.id
         entity.name = model.name
-        entity.tasks = model.tasks?.map { taskMapper.modelToEntity(it) } as MutableList<TaskEntity>?
+        entity.tasks = model.tasks?.map { taskMapper.modelToEntity(it) }?.toMutableList()
         return entity
     }
 
     fun entityToModel(entity: TaskStatusEntity): TaskStatus = TaskStatus(
         entity.id!!,
         entity.name!!,
-        entity.tasks?.map { taskMapper.entityToModel(it) } as MutableList<Task>?
+        entity.tasks?.map { taskMapper.entityToModel(it) }?.toMutableList()
     )
 }

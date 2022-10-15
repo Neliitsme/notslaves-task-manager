@@ -6,5 +6,5 @@ data class User(
     val id: Int?,
     val username: String,
     val created: Date,
-    val projects: List<Project>?,
+    val projects: MutableList<Project>?,
 )

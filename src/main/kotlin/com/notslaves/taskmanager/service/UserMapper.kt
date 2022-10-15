@@ -13,7 +13,7 @@ class UserMapper(
         entity.id = model.id
         entity.username = model.username
         entity.created = model.created
-        entity.projects = model.projects?.map { projectMapper.modelToEntity(it) }
+        entity.projects = model.projects?.map { projectMapper.modelToEntity(it) }?.toMutableList()
         return entity
     }
 
@@ -21,6 +21,6 @@ class UserMapper(
         entity.id!!,
         entity.username!!,
         entity.created!!,
-        entity.projects?.map { projectMapper.entityToModel(it) } ?: listOf()
+        entity.projects?.map { projectMapper.entityToModel(it) }?.toMutableList() ?: mutableListOf()
     )
 }

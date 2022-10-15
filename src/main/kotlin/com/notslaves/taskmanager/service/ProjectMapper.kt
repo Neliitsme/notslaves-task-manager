@@ -17,8 +17,8 @@ class ProjectMapper(
         entity.name = model.name
         entity.description = model.description
         entity.created = model.created
-        entity.user =  userMapper.modelToEntity(model.user)
-        entity.tasks = model.tasks?.map { tasksMapper.modelToEntity(it) } as MutableList<TaskEntity>?
+        entity.user = userMapper.modelToEntity(model.user)
+        entity.tasks = model.tasks?.map { tasksMapper.modelToEntity(it) }?.toMutableList()
         return entity
     }
 
@@ -28,6 +28,6 @@ class ProjectMapper(
         entity.description!!,
         entity.created!!,
         userMapper.entityToModel(entity.user!!),
-        entity.tasks?.map { tasksMapper.entityToModel(it) } ?: listOf()
+        entity.tasks?.map { tasksMapper.entityToModel(it) }?.toMutableList() ?: mutableListOf()
     )
 }
