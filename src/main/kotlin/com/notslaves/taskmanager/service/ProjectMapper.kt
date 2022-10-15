@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component
 @Component
 class ProjectMapper(
     private val userMapper: UserMapper,
-    private val tasksMapper: TaskMapper,
 ) {
 
     fun modelToEntity(model: Project): ProjectEntity {
@@ -18,7 +17,6 @@ class ProjectMapper(
         entity.description = model.description
         entity.created = model.created
         entity.user = userMapper.modelToEntity(model.user)
-        entity.tasks = model.tasks?.map { tasksMapper.modelToEntity(it) }?.toMutableList()
         return entity
     }
 
@@ -28,6 +26,5 @@ class ProjectMapper(
         entity.description!!,
         entity.created!!,
         userMapper.entityToModel(entity.user!!),
-        entity.tasks?.map { tasksMapper.entityToModel(it) }?.toMutableList() ?: mutableListOf()
     )
 }

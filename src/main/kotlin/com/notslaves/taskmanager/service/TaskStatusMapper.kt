@@ -7,21 +7,17 @@ import com.notslaves.taskmanager.model.TaskStatus
 import org.springframework.stereotype.Component
 
 @Component
-class TaskStatusMapper(
-    private val taskMapper: TaskMapper
-) {
+class TaskStatusMapper {
 
-    fun modelToEntity(model: TaskStatus): TaskStatusEntity{
+    fun modelToEntity(model: TaskStatus): TaskStatusEntity {
         val entity = TaskStatusEntity()
         entity.id = model.id
         entity.name = model.name
-        entity.tasks = model.tasks?.map { taskMapper.modelToEntity(it) }?.toMutableList()
         return entity
     }
 
     fun entityToModel(entity: TaskStatusEntity): TaskStatus = TaskStatus(
         entity.id!!,
-        entity.name!!,
-        entity.tasks?.map { taskMapper.entityToModel(it) }?.toMutableList()
+        entity.name!!
     )
 }
