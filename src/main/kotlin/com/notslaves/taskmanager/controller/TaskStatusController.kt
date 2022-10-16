@@ -10,7 +10,6 @@ import org.springframework.web.server.ResponseStatusException
 @RestController
 @RequestMapping("/api/v1/taskstatuses")
 class TaskStatusController(private val service: TaskStatusService) {
-    // Todo
     @GetMapping
     fun getAllStatuses(): List<TaskStatus> = service.getAllStatuses()
 
@@ -27,8 +26,10 @@ class TaskStatusController(private val service: TaskStatusService) {
     @DeleteMapping("/{id}")
     fun deleteStatus(@PathVariable("id") id: Int) = service.deleteStatus(id)
 
-    // Todo: Could make a null check by making and id put request
-    // @PutMapping("/{id}")
     @PutMapping()
     fun modifyStatus(@RequestBody @Validated taskStatus: TaskStatus): TaskStatus? = service.modifyStatus(taskStatus)
+        ?: throw ResponseStatusException(
+            HttpStatus.NOT_FOUND,
+            "Task status with id ${taskStatus.id} not found"
+        )
 }
