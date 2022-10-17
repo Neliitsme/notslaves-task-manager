@@ -21,13 +21,11 @@ class TaskStatusService(
         return mapper.entityToModel(repository.save(entity))
     }
 
-    fun modifyStatus(taskStatus: TaskStatus): TaskStatus? {
-        val entity = taskStatus.id?.let {
-            repository.findById(it).orElse(null)
-        }
-
-        return entity?.let {
-            mapper.entityToModel(repository.save(mapper.modelToEntity(taskStatus)))
+    fun modifyStatus(id: Int, taskStatus: TaskStatus): TaskStatus? {
+        val foundTaskStatus = getStatus(id)
+        return foundTaskStatus?.let {
+            repository.save(mapper.modelToEntity(taskStatus))
+            taskStatus
         }
     }
 }

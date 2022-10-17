@@ -26,10 +26,11 @@ class TaskStatusController(private val service: TaskStatusService) {
     @DeleteMapping("/{id}")
     fun deleteStatus(@PathVariable("id") id: Int) = service.deleteStatus(id)
 
-    @PutMapping()
-    fun modifyStatus(@RequestBody @Validated taskStatus: TaskStatus): TaskStatus? = service.modifyStatus(taskStatus)
-        ?: throw ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            "Task status with id ${taskStatus.id} not found"
-        )
+    @PutMapping("/{id}")
+    fun modifyStatus(@PathVariable("id") id: Int, @RequestBody @Validated taskStatus: TaskStatus): TaskStatus? =
+        service.modifyStatus(id, taskStatus)
+            ?: throw ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Task status with id ${taskStatus.id} not found"
+            )
 }
