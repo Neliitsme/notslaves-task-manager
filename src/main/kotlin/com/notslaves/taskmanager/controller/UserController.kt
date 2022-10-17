@@ -18,7 +18,7 @@ class UserController(private val service: UserService) {
     fun getUser(@PathVariable("id") id: Int): User? =
         service.getUser(id) ?: throw ResponseStatusException(
             HttpStatus.NOT_FOUND,
-            "Task status with id $id not found"
+            "User with id $id not found"
         )
 
     @PostMapping
@@ -31,6 +31,6 @@ class UserController(private val service: UserService) {
     fun modifyUser(@PathVariable("id") id: Int, @RequestBody @Validated user: User): User? = service.modifyUser(id, user)
         ?: throw ResponseStatusException(
             HttpStatus.NOT_FOUND,
-            "Task status with id ${user.id} not found"
+            "User with id ${user.id} not found"
         )
 }
