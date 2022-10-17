@@ -1,5 +1,6 @@
 package com.notslaves.taskmanager.entity
 
+import org.hibernate.annotations.CreationTimestamp
 import java.util.*
 import javax.persistence.*
 
@@ -18,7 +19,8 @@ class TaskEntity {
     @Column(name = "description")
     var description: String? = null
 
-    @Column(name = "created", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "created")
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     var created: Date? = null
 

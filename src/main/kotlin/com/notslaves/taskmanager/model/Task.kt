@@ -6,7 +6,8 @@ data class Task(
     val id: Int?,
     val name: String,
     val description: String?,
-    val created: Date,
-    val status: TaskStatus,
-    val project: Project,
+    var created: Date?,
+    // Todo: maybe switch to stringified status
+    var status: Int,
+    val project: Int,
 )
