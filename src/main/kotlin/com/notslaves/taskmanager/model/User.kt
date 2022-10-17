@@ -5,5 +5,5 @@ import java.util.Date
 data class User(
     val id: Int?,
     val username: String,
-    val created: Date,
+    var created: Date?,
 )

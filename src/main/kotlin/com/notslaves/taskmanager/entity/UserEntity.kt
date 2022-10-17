@@ -1,5 +1,6 @@
 package com.notslaves.taskmanager.entity
 
+import org.hibernate.annotations.CreationTimestamp
 import java.util.*
 import javax.persistence.*
 
@@ -14,7 +15,8 @@ class UserEntity {
     @Column(name = "username", unique = true)
     var username: String? = null
 
-    @Column(name = "created", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "created")
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     var created: Date? = null
 
