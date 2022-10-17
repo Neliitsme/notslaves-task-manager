@@ -6,6 +6,6 @@ data class Project(
     val id: Int?,
     val name: String,
     val description: String?,
-    val created: Date,
-    val user: User,
+    var created: Date?,
+    val user: Int,
 )
