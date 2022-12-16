@@ -1,6 +1,6 @@
 package com.notslaves.taskmanager.model
 
-data class Group(
+data class TaskStatus(
+    val id: Int?,
     val name: String,
-    val students: List<Student>?
 )
